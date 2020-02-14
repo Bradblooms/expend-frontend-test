@@ -1,0 +1,88 @@
+body {
+  font-family: "Roboto", sans-serif !important;
+}
+
+.app_wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* From Styling */
+
+.form_Wrapper {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 6rem;
+  margin-bottom: 6rem;
+}
+
+.form_input_wrapper {
+  margin: 10px 0;
+}
+
+.form_lable_container {
+  margin: 5px 5px !important;
+}
+.form_input_wrapper label {
+  font-size: 12px;
+  color: #9898c0 !important;
+}
+
+.form_input_wrapper_error label {
+  font-size: 12px;
+  color: #d10092 !important;
+}
+
+input {
+  height: 35px;
+  border-radius: 2px;
+  border: 1px solid rgb(221, 220, 220);
+  padding: 5px 9px;
+  font-size: 15px;
+  color: rgb(56, 56, 56);
+}
+
+input:focus {
+  border: 1px solid rgb(93, 136, 201);
+}
+input:focus {
+  border: 1px solid rgb(93, 136, 201);
+}
+
+.form_input_wrapper_error input {
+  border: 1px solid rgb(250, 38, 38);
+}
+
+::placeholder {
+  color: rgb(207, 205, 205);
+}
+
+.submit_button {
+  height: 50px;
+  width: 200px;
+  border: none;
+  color: white;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+.active_button {
+  background-color: rgb(56, 226, 170);
+}
+
+.disabled_button {
+  background-color: rgb(173, 241, 219);
+}
+
+.submit_button_wrapper {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.active_button:hover,
+.active_button:active,
+.active_button:focus {
+  background-color: rgb(46, 177, 133);
+  cursor: pointer;
+}

@@ -1,0 +1,1 @@
+export const STORE_JOBS = "STORE_JOBS"
