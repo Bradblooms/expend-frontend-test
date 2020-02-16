@@ -1,22 +1,41 @@
 
 import { createReducer } from "../../app/util/reducerUtil";
 
-import { STORE_JOBS } from "./jobConstants"
+import { JOB_RECIEVED, JOB_STORED, JOB_ERORR } from "./jobConstants"
 
 const initialState = {
-    job: {}
+    items: []
 }
 
 
-export const jobsReducer = (state, payload) => {
+export const jobRecieved = (state, payload) => {
     return {
         ...state,
-        job: payload.jobs
+        loading: true
+    }
+}
+export const jobStored = (state, payload) => {
+    return {
+        ...state,
+        loading: false,
+        items: payload,
+        type: "success"
+    }
+}
+
+export const jobErorr = (state, payload) => {
+    return {
+        ...state,
+        loading: false,
+        items: payload,
+        type: "error"
     }
 }
 
 
 
 export default createReducer(initialState, {
-    [STORE_JOBS]: jobsReducer
+    [JOB_RECIEVED]: jobRecieved,
+    [JOB_STORED]: jobStored,
+    [JOB_ERORR]: jobErorr,
 })

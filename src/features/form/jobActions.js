@@ -1,28 +1,53 @@
-import { STORE_JOBS } from "./jobConstants"
+
 import axios from "axios"
 import { reset } from "redux-form"
 
+import { JOB_RECIEVED, JOB_STORED, JOB_ERORR } from "./jobConstants"
 
-export const storeJobs = jobs => async dispatch => {
+import { setAlert, resetAlert } from '../alert/alertActions'
 
-    const config = {
-        headers: {
-            'Content-Type': 'aplication/json'
-        }
-    }
-    const { firstName, lastName, email, phone_number } = jobs
 
-    const body = JSON.stringify({ firstName, lastName, email, phone_number })
 
-    console.log(JSON.parse(body))
+export const storeJobs = job => async (dispatch, getState) => {
+
+    dispatch({ type: JOB_RECIEVED })
 
     try {
-        const res = await axios.post('http://example.com/api/v1/submit-form ', body, config)
-        console.log('success', res.data)
+
+        const options = {
+            url: 'http://example.com/api/v1/submit-form',
+            method: 'POST',
+            timeout: 4000,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json;charset=UTF-8'
+            },
+            data: job,
+        };
+
+        const response = await axios(options)
+
+
+
+        dispatch({ type: JOB_STORED, payload: response.data })
+        // dispatch success alert
+        dispatch(setAlert('success', 'Form Submited Successfully', 'success'))
+
+        // clear form after successfull submission
+        dispatch(reset("form"));
+
+        //in case of success alert will disapear in 2.5 sec
+
+        dispatch(resetAlert())
+
+
 
     } catch (err) {
-        console.log(err)
-        dispatch(reset("form"));
+        // dispach network error alert
+
+        dispatch({ type: JOB_ERORR })
+        dispatch(setAlert('Network Error', "Somthing went wrong, please tray again", 'danger'))
+
     }
 
 }

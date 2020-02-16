@@ -5,6 +5,7 @@ import { combineReducers } from "redux";
 import { reducer as FormReducer } from "redux-form";
 
 import jobsReducers from "../../features/form/jobReducers"
+import alertReducers from "../../features/alert/alertReducers"
 
 
 
@@ -12,7 +13,8 @@ import jobsReducers from "../../features/form/jobReducers"
 
 const appReducer = combineReducers({
     jobs: jobsReducers,
-    form: FormReducer
+    form: FormReducer,
+    alert: alertReducers
 });
 
 const rootReducer = (state, action) => {
